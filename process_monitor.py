@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#coding:utf-8
 
 import win32api
 import win32con
@@ -35,7 +36,7 @@ def getprocess_privileges(pid):
 
 
 def log_to_file(message):
-    fd = open("process_monitor_log.csv", "ab")
+    fd = open("process_monitor_log.csv", "a")
     fd.write("%s\r\n" % message)
     fd.close()
 
@@ -61,7 +62,7 @@ while True:
         cmdline = new_process.CommandLine
         pid = new_process.ProcessId
         parent_id = new_process.ParentProcessId
-        privileges = "N/A"
+        privileges = getprocess_privileges(pid)
 
         process_log_message = "%s,%s,%s,%s,%s,%s,%s\r\n" % (create_date, proc_owner, executable, cmdline, pid, parent_id, privileges)
 
