@@ -35,7 +35,7 @@ def getprocess_privileges(pid):
 
 
 def log_to_file(message):
-    fd = open("process_monitor_log.csv", "ab")
+    fd = open("process_monitor_log.csv", "a")
     fd.write("%s\r\n" % message)
     fd.close()
 
